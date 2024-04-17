@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Event::listen(
-            ClassCanceled::class,
             NotifyClassCanceled::class,
         );
     }
