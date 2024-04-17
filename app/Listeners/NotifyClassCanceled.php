@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\ClassCanceled;
+use App\Jobs\NotifyClassCanceledJob;
 use App\Mail\ClassCanceledMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
@@ -37,6 +38,7 @@ class NotifyClassCanceled
         $className = $event->scheduledClass->classType->name;
         $classDateTime = $event->scheduledClass->date_time;
         $details = compact('className','classDateTime');
-        Notification::send($members, new ClassCanceledNotification($details));
+
+        NotifyClassCanceledJob::dispatch($members, $details);
     }
 }
