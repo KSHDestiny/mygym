@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduledClassController;
 use App\Http\Middleware\CheckUserRole;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(
 Route::get('instructor/dashboard', function () {
     return view('instructor.dashboard');
 })->middleware(['auth', 'role:instructor'])->name('instructor.dashboard');
+
+Route::resource('/instructor/schedule', ScheduledClassController::class)->only(['index', 'create', 'store', 'destroy'])->middleware(['auth', 'role:instructor']);
 
 Route::get('/member/dashboard', function () {
     return view('member.dashboard');
