@@ -49,10 +49,5 @@
     ```
 11. Go to localhost on your browser to view the application
 
-### if you are not familiar with sail command and want to run php artisan, run
-
-    ```
-    sail exec -it laravel.test bash
-    ```
-
-laravel.test will differ based on your docker image and can check using `sail ps`
+_if you are not familiar with sail command and want to run php artisan, run `sail exec -it laravel.test bash`_
+_"laravel.test" will differ based on your docker image and can check using `sail ps`_
